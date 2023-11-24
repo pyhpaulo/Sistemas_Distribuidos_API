@@ -1,6 +1,10 @@
+// produto.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from './produto.service';
 import { Produto } from './produto.model';
+import { catchError, finalize } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-produto',
@@ -19,55 +23,46 @@ export class ProdutoComponent implements OnInit {
   }
 
   carregarProdutos(): void {
-    this.produtoService.getProdutos().subscribe(
-      produtos => this.produtos = produtos,
-      error => console.error(error)
-    );
+    this.produtoService.getProdutos()
+      .subscribe(
+        produtos => this.produtos = produtos,
+        error => console.error(error)
+      );
   }
 
   editProduto(produto: Produto): void {
     this.editing = true;
-    // Copie o produto para o formulário para edição
     this.produtoForm = { ...produto };
   }
 
   deleteProduto(id: number): void {
-    // Lógica para excluir o produto (use seu serviço)
-    this.produtoService.excluirProduto(id).subscribe(
-      () => {
-        // Atualize a lista de produtos após a exclusão
-        this.carregarProdutos();
-      },
-      error => console.error(error)
-    );
+    this.produtoService.excluirProduto(id)
+      .pipe(
+        catchError(() => EMPTY), // Ignorar erro para evitar interrupção
+        finalize(() => this.carregarProdutos()) // Atualizar a lista de produtos após a exclusão
+      )
+      .subscribe();
   }
 
   submitForm(): void {
     if (this.editing) {
-      // Lógica para editar o produto (use seu serviço)
-      this.produtoService.atualizarProduto(this.produtoForm.id, this.produtoForm).subscribe(
-        () => {
-          // Atualize a lista de produtos após a edição
-          this.carregarProdutos();
-          this.resetForm();
-        },
-        error => console.error(error)
-      );
+      this.produtoService.atualizarProduto(this.produtoForm.id, this.produtoForm)
+        .pipe(
+          catchError(() => EMPTY), // Ignorar erro para evitar interrupção
+          finalize(() => this.resetForm()) // Limpar o formulário após a edição
+        )
+        .subscribe();
     } else {
-      // Lógica para adicionar um novo produto (use seu serviço)
-      this.produtoService.adicionarProduto(this.produtoForm).subscribe(
-        () => {
-          // Atualize a lista de produtos após a adição
-          this.carregarProdutos();
-          this.resetForm();
-        },
-        error => console.error(error)
-      );
+      this.produtoService.adicionarProduto(this.produtoForm)
+        .pipe(
+          catchError(() => EMPTY), // Ignorar erro para evitar interrupção
+          finalize(() => this.resetForm()) // Limpar o formulário após a adição
+        )
+        .subscribe();
     }
   }
 
   resetForm(): void {
-    // Limpe o formulário e redefina o modo de edição
     this.produtoForm = { id: 0, name: '', description: '', price: 0, quantity: 0 };
     this.editing = false;
   }
