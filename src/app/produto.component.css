@@ -1,0 +1,56 @@
+/* produto.component.css */
+
+/* Estilize o componente de produto */
+.produto-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.produto-card h3 {
+  color: #333;
+}
+
+.produto-card p {
+  color: #666;
+}
+
+/* Estilize os botões de ação */
+.action-buttons {
+  margin-top: 10px;
+}
+
+.action-buttons button {
+  margin-right: 8px;
+}
+
+/* Estilize o formulário de produto */
+.produto-form {
+  margin-top: 20px;
+  padding: 16px;
+  border: 1px solid #ccc;
+}
+
+.produto-form h2 {
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
