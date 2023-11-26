@@ -1,56 +1,98 @@
-/* produto.component.css */
-
-/* Estilize o componente de produto */
-.produto-card {
-  border: 1px solid #ccc;
-  padding: 16px;
-  margin-bottom: 16px;
+h2{
+  text-align: center;
 }
 
-.produto-card h3 {
-  color: #333;
+label{
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
 }
 
-.produto-card p {
-  color: #666;
+input, textarea{
+  border: 1px solid #FFFFFF ;
+  padding: 10px 10px;
+  border-radius: 5px;
+  width: 400px;
+  background-color: transparent;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all .3s ease;
 }
 
-/* Estilize os botões de ação */
-.action-buttons {
-  margin-top: 10px;
+input:hover, textarea:hover{
+  background-color: #181818;
 }
 
-.action-buttons button {
-  margin-right: 8px;
-}
-
-/* Estilize o formulário de produto */
 .produto-form {
-  margin-top: 20px;
-  padding: 16px;
-  border: 1px solid #ccc;
-}
-
-.produto-form h2 {
-  color: #333;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-input,
-textarea {
+  background: #10101099;
+  padding: 50px 30px;
+    position: relative;
+    margin: 100px auto 0;
+    max-width: 500px;
   width: 100%;
-  padding: 8px;
-  margin-bottom: 12px;
+  border-radius: 20px;
+  transition: all .3s ease;
 }
 
-button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
+.produto-form:hover {
+    background-color: #101010;
+}
+
+.produto-form:before, .produto-form:after {
+  border-radius: 20px;
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+        #0000ff, #00ff00,#ffff00, #ff0000);
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.produto-form:after {
+    filter: blur(50px);
+}
+
+
+button{
+  padding: 20px 10px;
+  border-radius: 5px;
+  width: 100%;
   border: none;
   cursor: pointer;
+  width: 420px;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 20px;
+
+  transition: .5s;
+}
+
+button:hover{
+  filter: drop-shadow(0 0 20px #FFFFFF);
+}
+
+form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

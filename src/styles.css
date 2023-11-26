@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 3rem 3rem;
+}

@@ -38,7 +38,7 @@ export class ProdutoComponent implements OnInit {
   deleteProduto(id: number): void {
     this.produtoService.excluirProduto(id)
       .pipe(
-        catchError(() => EMPTY), // Ignorar erro para evitar interrupção
+        catchError(() => EMPTY),
         finalize(() => this.carregarProdutos()) // Atualizar a lista de produtos após a exclusão
       )
       .subscribe();
@@ -48,14 +48,14 @@ export class ProdutoComponent implements OnInit {
     if (this.editing) {
       this.produtoService.atualizarProduto(this.produtoForm.id, this.produtoForm)
         .pipe(
-          catchError(() => EMPTY), // Ignorar erro para evitar interrupção
+          catchError(() => EMPTY),
           finalize(() => this.resetForm()) // Limpar o formulário após a edição
         )
         .subscribe();
     } else {
       this.produtoService.adicionarProduto(this.produtoForm)
         .pipe(
-          catchError(() => EMPTY), // Ignorar erro para evitar interrupção
+          catchError(() => EMPTY), 
           finalize(() => this.resetForm()) // Limpar o formulário após a adição
         )
         .subscribe();
