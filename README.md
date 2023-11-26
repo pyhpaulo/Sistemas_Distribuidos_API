@@ -1,4 +1,4 @@
-# Sistemas Distribuidos API
+# Sistemas Distribuidos - API
 4° Semestre - ADS | UCs  Sistemas distribuídos e Mobile - Prof. Montanha | 
 
 Desenvolvimento da API CRUD , utilizando Web ASP.NET Core em C# e Angular
