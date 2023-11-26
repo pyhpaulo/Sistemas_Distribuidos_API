@@ -13,6 +13,7 @@ Desenvolvimento da API CRUD , utilizando Web ASP.NET Core em C# e Angular
 	<li>Rafael Reis Silva Franco - RA 322118954</li>
 	<li>Geisiane Silva Jeronimo - RA 322131254</li>
 </ul>
+
 # Observações
 
 Código Angular na Branch Angular
