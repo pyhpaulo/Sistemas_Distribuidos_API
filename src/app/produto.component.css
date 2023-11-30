@@ -96,3 +96,52 @@ form{
   align-items: center;
   flex-direction: column;
 }
+
+.produto-card{
+  text-align: center;
+  border: 1px solid #404040;
+
+background: #10101099;
+  padding: 50px 30px;
+    position: relative;
+    margin: 100px auto 0;
+    max-width: 500px;
+  width: 100%;
+  border-radius: 20px;
+  transition: all .3s ease;
+}
+
+.produto-form:hover {
+    background-color: #101010;
+}
+
+.produto-form:before, .produto-form:after {
+  border-radius: 20px;
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+        #0000ff, #00ff00,#ffff00, #ff0000);
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.produto-form:after {
+    filter: blur(50px);
+}
